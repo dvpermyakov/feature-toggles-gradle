@@ -1,5 +1,6 @@
 package com.dvpermyakov.feature.toggles.data
 
+import com.dvpermyakov.feature.toggles.domain.FeatureToggle
 import com.dvpermyakov.feature.toggles.domain.FeatureToggleConfig
 import com.dvpermyakov.feature.toggles.domain.FeatureToggleId
 import com.dvpermyakov.feature.toggles.domain.FeatureToggleRepository
@@ -9,7 +10,8 @@ class FeatureToggleRepositoryImpl(
 ) : FeatureToggleRepository {
 
     override fun isEnabled(toggleId: FeatureToggleId): Boolean {
-        return config.list.firstOrNull { it.id == toggleId }?.enabled ?: false
+        val featureToggle: FeatureToggle? = config.list.firstOrNull { it.id == toggleId }
+        return featureToggle?.enabled ?: false
     }
 
 }
