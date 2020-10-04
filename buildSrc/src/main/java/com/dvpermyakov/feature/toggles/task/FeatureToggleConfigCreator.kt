@@ -1,6 +1,7 @@
 package com.dvpermyakov.feature.toggles.task
 
 import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import javax.annotation.processing.Generated
 
 class FeatureToggleConfigCreator {
@@ -24,9 +25,10 @@ class FeatureToggleConfigCreator {
     }
 
     private fun getListProperty(): PropertySpec {
-        val featureToggleIdType = ClassName("com.dvpermyakov.feature.toggles.domain", "FeatureToggleId")
-        return PropertySpec.builder("id", featureToggleIdType, KModifier.OVERRIDE)
-            .initializer("FeatureToggleId.CARD")
+        val featureToggleType = ClassName("com.dvpermyakov.feature.toggles.domain", "FeatureToggle")
+        val listType = ClassName("kotlin.collections", "List").parameterizedBy(featureToggleType)
+        return PropertySpec.builder("list", listType, KModifier.OVERRIDE)
+            .initializer("listOf()")
             .build()
     }
 }
