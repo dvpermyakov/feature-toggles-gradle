@@ -1,5 +1,7 @@
 package com.dvpermyakov.feature.toggles.domain
 
 enum class FeatureToggleId {
-    CARD;
+    CARD,
+    ACCOUNT,
+    MAP;
 }

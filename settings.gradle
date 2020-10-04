@@ -1,4 +1,4 @@
 rootProject.name = 'feature-toggles'
 
+include 'core'
 include 'sample'
-

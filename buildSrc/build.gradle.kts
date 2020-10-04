@@ -11,4 +11,5 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8", "1.3.72"))
     implementation(kotlin("gradle-plugin", "1.3.72"))
+    implementation("com.squareup:kotlinpoet:1.5.0")
 }
