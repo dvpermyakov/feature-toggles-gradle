@@ -3,7 +3,7 @@ package com.dvpermyakov.feature.toggles
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
-class GreetingPlugin : Plugin<Project> {
+class FeatureTogglePlugin : Plugin<Project> {
     override fun apply(project: Project) {
         project.task("hello") {
             doLast {

@@ -1,4 +1,4 @@
-import com.dvpermyakov.feature.toggles.GreetingPlugin
+import com.dvpermyakov.feature.toggles.FeatureTogglePlugin
 
 plugins {
     kotlin("jvm")
@@ -23,4 +23,4 @@ dependencies {
     testImplementation("io.mockk:mockk:1.10.0")
 }
 
-apply<GreetingPlugin>()
+apply<FeatureTogglePlugin>()
