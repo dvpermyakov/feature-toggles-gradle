@@ -1,5 +1,3 @@
-import com.dvpermyakov.feature.toggles.plugin.FeatureTogglePlugin
-
 plugins {
     kotlin("jvm")
 }
@@ -10,7 +8,6 @@ repositories {
 
 sourceSets.main {
     java.srcDirs("src/main/kotlin")
-    java.srcDirs("build/generated")
 }
 
 repositories {
@@ -24,5 +21,3 @@ dependencies {
     testImplementation("junit:junit:4.13")
     testImplementation("io.mockk:mockk:1.10.0")
 }
-
-apply<FeatureTogglePlugin>()

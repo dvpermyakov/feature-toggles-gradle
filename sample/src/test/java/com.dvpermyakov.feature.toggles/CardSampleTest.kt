@@ -1,14 +1,14 @@
 package com.dvpermyakov.feature.toggles
 
 import com.dvpermyakov.feature.toggles.data.FeatureToggleRepositoryImpl
-import com.dvpermyakov.feature.toggles.domain.FeatureToggleConfig_debug
+import com.dvpermyakov.feature.toggles.domain.FeatureToggleConfig_default
 import org.junit.Assert
 import org.junit.Test
 
 class CardSampleTest {
 
     private val featureToggleRepository = FeatureToggleRepositoryImpl(
-        config = FeatureToggleConfig_debug
+        config = FeatureToggleConfig_default
     )
 
     private val cardSample = CardSample(
