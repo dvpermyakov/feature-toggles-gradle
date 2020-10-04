@@ -17,14 +17,45 @@ abstract class GenerateFeatureTogglesTask : DefaultTask() {
         val file = getDestination()
         file.parentFile.mkdirs()
 
-        val objCreator = FeatureToggleObjectCreator(
-            enabled = true,
-            name = "card"
+        val list = listOf(
+            FeatureToggle(
+                id = "CARD",
+                enabled = true,
+                name = "New card enabled"
+            ),
+            FeatureToggle(
+                id = "ACCOUNT",
+                enabled = true,
+                name = "Account improvement"
+            ),
+            FeatureToggle(
+                id = "MAP",
+                enabled = true,
+                name = "Account improvement"
+            )
         )
-        objCreator.create().writeTo(getDestination())
+        val objCreators = list.map { toggle ->
+            FeatureToggleObjectCreator(
+                id = toggle.id,
+                enabled = toggle.enabled,
+                name = toggle.name
+            )
+        }
+        objCreators.forEach { creator ->
+            creator.create().writeTo(getDestination())
+        }
 
-        val configCreator = FeatureToggleConfigCreator()
+        val configCreator = FeatureToggleConfigCreator(
+            id = "default",
+            list = objCreators.map { creator -> creator.getFileName() }
+        )
         configCreator.create().writeTo(getDestination())
 
     }
+
+    private data class FeatureToggle(
+        val id: String,
+        val enabled: Boolean,
+        val name: String
+    )
 }

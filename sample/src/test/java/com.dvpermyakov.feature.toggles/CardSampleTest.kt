@@ -1,16 +1,15 @@
 package com.dvpermyakov.feature.toggles
 
-import com.dvpermyakov.feature.toggles.domain.FeatureToggleRepository
-import io.mockk.every
-import io.mockk.mockk
+import com.dvpermyakov.feature.toggles.data.FeatureToggleRepositoryImpl
+import com.dvpermyakov.feature.toggles.domain.FeatureToggleConfig_debug
 import org.junit.Assert
 import org.junit.Test
 
 class CardSampleTest {
 
-    private val featureToggleRepository = mockk<FeatureToggleRepository> {
-        every { isEnabled(any()) } returns true
-    }
+    private val featureToggleRepository = FeatureToggleRepositoryImpl(
+        config = FeatureToggleConfig_debug
+    )
 
     private val cardSample = CardSample(
         featureToggleRepository = featureToggleRepository
