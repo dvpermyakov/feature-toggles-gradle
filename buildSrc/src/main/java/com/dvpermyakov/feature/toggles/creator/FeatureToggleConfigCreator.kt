@@ -16,18 +16,17 @@ class FeatureToggleConfigCreator(
     private fun getFileName() = "FeatureToggleConfig_${id}"
 
     private fun getFileSpec(): FileSpec {
-        val fileSpecBuilder = FileSpec.builder(TypeNames.getPackageName(), getFileName())
-        fileSpecBuilder.addType(getTypeSpec())
-        return fileSpecBuilder.build()
+        return FileSpec.builder(TypeNames.getPackageName(), getFileName())
+            .addType(getTypeSpec())
+            .build()
     }
 
     private fun getTypeSpec(): TypeSpec {
-        val featureToggleType = TypeNames.getFeatureToggleConfig()
-        val objectSpecBuilder = TypeSpec.objectBuilder(getFileName())
+        return TypeSpec.objectBuilder(getFileName())
             .addAnnotation(Generated::class.java)
-            .addSuperinterface(featureToggleType)
-        objectSpecBuilder.addProperties(listOf(getListProperty()))
-        return objectSpecBuilder.build()
+            .addSuperinterface(TypeNames.getFeatureToggleConfig())
+            .addProperties(listOf(getListProperty()))
+            .build()
     }
 
     private fun getListProperty(): PropertySpec {

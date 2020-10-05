@@ -3,47 +3,46 @@ package com.dvpermyakov.feature.toggles.creator
 import com.dvpermyakov.feature.toggles.task.TypeNames
 import com.squareup.kotlinpoet.*
 import javax.annotation.processing.Generated
+import com.dvpermyakov.feature.toggles.domain.FeatureToggle
 
 class FeatureToggleObjectCreator(
-    private val id: String,
-    private val enabled: Boolean,
-    private val name: String
+    private val featureToggle: FeatureToggle
 ) {
     fun create(): FileSpec {
         return getFileSpec()
     }
 
-    fun getFileName() = "FeatureToggle_${id}"
+    fun getFileName() = "FeatureToggle_${featureToggle.id}"
 
     private fun getFileSpec(): FileSpec {
-        val fileSpecBuilder = FileSpec.builder(TypeNames.getPackageName(), getFileName())
-        fileSpecBuilder.addType(getTypeSpec())
-        return fileSpecBuilder.build()
+        return FileSpec.builder(TypeNames.getPackageName(), getFileName())
+            .addType(getTypeSpec())
+            .build()
     }
 
     private fun getTypeSpec(): TypeSpec {
-        val objectSpecBuilder = TypeSpec.objectBuilder(getFileName())
+        return TypeSpec.objectBuilder(getFileName())
             .addAnnotation(Generated::class.java)
             .addSuperinterface(TypeNames.getFeatureToggle())
-        objectSpecBuilder.addProperties(listOf(getIdProperty(), getEnabledProperty(), getNameProperty()))
-        return objectSpecBuilder.build()
+            .addProperties(listOf(getIdProperty(), getEnabledProperty(), getNameProperty()))
+            .build()
     }
 
     private fun getIdProperty(): PropertySpec {
         return PropertySpec.builder("id", TypeNames.getFeatureToggleId(), KModifier.OVERRIDE)
-            .initializer("FeatureToggleId.$id")
+            .initializer("FeatureToggleId.${featureToggle.id}")
             .build()
     }
 
     private fun getEnabledProperty(): PropertySpec {
         return PropertySpec.builder("enabled", Boolean::class, KModifier.OVERRIDE)
-            .initializer("$enabled")
+            .initializer("${featureToggle.enabled}")
             .build()
     }
 
     private fun getNameProperty(): PropertySpec {
         return PropertySpec.builder("name", String::class, KModifier.OVERRIDE)
-            .initializer("\"$name\"")
+            .initializer("\"${featureToggle.name}\"")
             .build()
     }
 }

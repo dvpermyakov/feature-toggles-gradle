@@ -28,11 +28,7 @@ abstract class GenerateFeatureTogglesTask : DefaultTask() {
         file.parentFile.mkdirs()
 
         val objCreators = toggles.map { toggle ->
-            FeatureToggleObjectCreator(
-                id = toggle.id,
-                enabled = toggle.enabled,
-                name = toggle.name
-            )
+            FeatureToggleObjectCreator(toggle)
         }
         objCreators.forEach { creator ->
             creator.create().writeTo(getDestination())
