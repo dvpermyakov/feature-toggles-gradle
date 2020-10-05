@@ -1,13 +1,14 @@
 package com.dvpermyakov.feature.toggles
 
+import com.dvpermyakov.feature.toggles.domain.FeatureToggleConfig
 import com.dvpermyakov.feature.toggles.domain.FeatureToggleId
-import com.dvpermyakov.feature.toggles.domain.FeatureToggleRepository
 
 class CardInteractor(
-    private val featureToggleRepository: FeatureToggleRepository
+    private val config: FeatureToggleConfig
 ) {
-
-    fun isGooglePayEnabled(): Boolean {
-        return featureToggleRepository.isEnabled(FeatureToggleId.CARD)
+    fun isGooglePayAvailable(): Boolean {
+        return config.list.firstOrNull { featureToggle ->
+            featureToggle.id == FeatureToggleId.CARD
+        }?.enabled ?: false
     }
 }
