@@ -39,6 +39,5 @@ abstract class GenerateFeatureTogglesTask : DefaultTask() {
             list = objCreators.map { creator -> creator.getFileName() }
         )
         configCreator.create().writeTo(getDestination())
-
     }
 }
