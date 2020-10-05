@@ -3,12 +3,11 @@ package com.dvpermyakov.feature.toggles
 import com.dvpermyakov.feature.toggles.domain.FeatureToggleId
 import com.dvpermyakov.feature.toggles.domain.FeatureToggleRepository
 
-class CardSample(
+class CardInteractor(
     private val featureToggleRepository: FeatureToggleRepository
 ) {
 
-    fun isCardEnabled(): Boolean {
+    fun isGooglePayEnabled(): Boolean {
         return featureToggleRepository.isEnabled(FeatureToggleId.CARD)
     }
-
 }
