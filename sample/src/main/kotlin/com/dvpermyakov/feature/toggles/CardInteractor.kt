@@ -7,7 +7,7 @@ class CardInteractor(
     private val config: FeatureToggleConfig
 ) {
     fun isGooglePayAvailable(): Boolean {
-        return config.list.firstOrNull { featureToggle ->
+        return config.featureToggles.firstOrNull { featureToggle ->
             featureToggle.id == FeatureToggleId.CARD
         }?.enabled ?: false
     }

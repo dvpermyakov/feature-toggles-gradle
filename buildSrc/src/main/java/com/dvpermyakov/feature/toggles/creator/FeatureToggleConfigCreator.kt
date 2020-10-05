@@ -32,7 +32,7 @@ class FeatureToggleConfigCreator(
     private fun getListProperty(): PropertySpec {
         val listType = ClassName("kotlin.collections", "List")
             .parameterizedBy(TypeNames.getFeatureToggle())
-        return PropertySpec.builder("list", listType, KModifier.OVERRIDE)
+        return PropertySpec.builder("featureToggles", listType, KModifier.OVERRIDE)
             .initializer("listOf(${list.joinToString(", ")})")
             .build()
     }
