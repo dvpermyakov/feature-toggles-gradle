@@ -6,16 +6,16 @@ import com.squareup.kotlinpoet.TypeName
 object TypeNames {
 
     fun getFeatureToggle(): TypeName {
-        return ClassName(getDomainName(), "FeatureToggle")
+        return ClassName(getPackageName(), "FeatureToggle")
     }
 
     fun getFeatureToggleId(): TypeName {
-        return ClassName(getDomainName(), "FeatureToggleId")
+        return ClassName(getPackageName(), "FeatureToggleId")
     }
 
     fun getFeatureToggleConfig(): TypeName {
-        return ClassName(getDomainName(), "FeatureToggleConfig")
+        return ClassName(getPackageName(), "FeatureToggleConfig")
     }
 
-    fun getDomainName() = "com.dvpermyakov.feature.toggles.domain"
+    fun getPackageName() = "com.dvpermyakov.feature.toggles.domain"
 }

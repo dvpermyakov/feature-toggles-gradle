@@ -12,9 +12,8 @@ open class FeatureTogglePluginExtension {
 }
 
 class FeatureTogglePlugin : Plugin<Project> {
-
     override fun apply(project: Project) {
-        val extension = project.extensions.create<FeatureTogglePluginExtension>("feature_toggles")
+        val extension = project.extensions.create<FeatureTogglePluginExtension>("toggles")
         project.tasks.register("toggles", GenerateFeatureTogglesTask::class.java) {
             configName = extension.configName
             toggles = extension.toggles

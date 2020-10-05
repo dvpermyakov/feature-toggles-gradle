@@ -16,7 +16,7 @@ class FeatureToggleConfigCreator(
     private fun getFileName() = "FeatureToggleConfig_${id}"
 
     private fun getFileSpec(): FileSpec {
-        val fileSpecBuilder = FileSpec.builder(TypeNames.getDomainName(), getFileName())
+        val fileSpecBuilder = FileSpec.builder(TypeNames.getPackageName(), getFileName())
         fileSpecBuilder.addType(getTypeSpec())
         return fileSpecBuilder.build()
     }
