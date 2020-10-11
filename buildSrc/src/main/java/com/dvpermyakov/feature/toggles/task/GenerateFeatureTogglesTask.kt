@@ -24,9 +24,6 @@ abstract class GenerateFeatureTogglesTask : DefaultTask() {
 
     @TaskAction
     fun action() {
-        val file = getDestination()
-        file.parentFile.mkdirs()
-
         val objCreators = toggles.map { toggle ->
             FeatureToggleObjectCreator(toggle)
         }
