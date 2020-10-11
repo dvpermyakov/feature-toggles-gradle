@@ -18,9 +18,7 @@ abstract class GenerateFeatureTogglesTask : DefaultTask() {
     var toggles: List<FeatureToggle> = emptyList()
 
     @OutputDirectory
-    fun getDestination(): File {
-        return project.file("${project.buildDir}/generated")
-    }
+    val generatedDirectory: File = project.file("${project.buildDir}/generated")
 
     @TaskAction
     fun action() {
@@ -28,13 +26,13 @@ abstract class GenerateFeatureTogglesTask : DefaultTask() {
             FeatureToggleObjectCreator(toggle)
         }
         objCreators.forEach { creator ->
-            creator.create().writeTo(getDestination())
+            creator.createFileSpec().writeTo(generatedDirectory)
         }
 
         val configCreator = FeatureToggleConfigCreator(
             id = configName,
             list = objCreators.map { creator -> creator.getFileName() }
         )
-        configCreator.create().writeTo(getDestination())
+        configCreator.createFileSpec().writeTo(generatedDirectory)
     }
 }
