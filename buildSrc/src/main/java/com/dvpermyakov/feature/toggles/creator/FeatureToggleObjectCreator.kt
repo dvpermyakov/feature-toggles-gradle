@@ -8,7 +8,7 @@ import com.dvpermyakov.feature.toggles.domain.FeatureToggle
 class FeatureToggleObjectCreator(
     private val featureToggle: FeatureToggle
 ) {
-    fun create(): FileSpec {
+    fun createFileSpec(): FileSpec {
         return getFileSpec()
     }
 

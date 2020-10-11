@@ -9,7 +9,7 @@ class FeatureToggleConfigCreator(
     private val id: String,
     private val list: List<String>
 ) {
-    fun create(): FileSpec {
+    fun createFileSpec(): FileSpec {
         return getFileSpec()
     }
 
