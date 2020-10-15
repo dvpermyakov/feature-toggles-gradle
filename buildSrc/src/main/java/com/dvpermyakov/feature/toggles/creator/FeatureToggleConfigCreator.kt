@@ -9,7 +9,7 @@ class FeatureToggleConfigCreator(
     private val name: String,
     private val list: List<String>
 ) {
-    fun createFileSpec(): FileSpec {
+    fun createKotlinFile(): FileSpec {
         return getFileSpec()
     }
 

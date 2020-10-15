@@ -26,13 +26,13 @@ abstract class GenerateTask : DefaultTask() {
             FeatureToggleCreator(toggle)
         }
         toggleCreators.forEach { creator ->
-            creator.createFileSpec().writeTo(generatedDirectory)
+            creator.createKotlinFile().writeTo(generatedDirectory)
         }
 
         val configCreator = FeatureToggleConfigCreator(
             name = configName,
             list = toggleCreators.map { creator -> creator.getFileName() }
         )
-        configCreator.createFileSpec().writeTo(generatedDirectory)
+        configCreator.createKotlinFile().writeTo(generatedDirectory)
     }
 }
