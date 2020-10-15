@@ -9,7 +9,7 @@ import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 
-abstract class GenerateFeatureTogglesTask : DefaultTask() {
+abstract class GenerateTask : DefaultTask() {
 
     @Input
     var configName: String = "default"
@@ -30,7 +30,7 @@ abstract class GenerateFeatureTogglesTask : DefaultTask() {
         }
 
         val configCreator = FeatureToggleConfigCreator(
-            id = configName,
+            name = configName,
             list = toggleCreators.map { creator -> creator.getFileName() }
         )
         configCreator.createFileSpec().writeTo(generatedDirectory)

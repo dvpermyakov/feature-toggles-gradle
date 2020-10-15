@@ -1,7 +1,7 @@
 package com.dvpermyakov.feature.toggles.plugin
 
 import com.dvpermyakov.feature.toggles.domain.FeatureToggle
-import com.dvpermyakov.feature.toggles.task.GenerateFeatureTogglesTask
+import com.dvpermyakov.feature.toggles.task.GenerateTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.create
@@ -16,7 +16,7 @@ open class FeatureTogglePluginExtension {
 class FeatureTogglePlugin : Plugin<Project> {
     override fun apply(project: Project) {
         val extension = project.extensions.create<FeatureTogglePluginExtension>("toggles")
-        val task = project.tasks.register("toggles", GenerateFeatureTogglesTask::class.java) {
+        val task = project.tasks.register("toggles", GenerateTask::class.java) {
             configName = extension.configName
             toggles = extension.toggles
         }
