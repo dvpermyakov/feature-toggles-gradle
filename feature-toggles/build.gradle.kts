@@ -31,12 +31,12 @@ configure<FeatureTogglePluginExtension> {
         ),
         FeatureToggle(
             id = "ACCOUNT",
-            enabled = true,
+            enabled = System.getenv("FT_ACCOUNT")?.toBoolean() ?: false,
             name = "Account improvement"
         ),
         FeatureToggle(
             id = "MAP",
-            enabled = true,
+            enabled = File("ft_map.txt").readText().trim().toBoolean(),
             name = "Map implementation"
         )
     )
