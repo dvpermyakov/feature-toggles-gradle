@@ -5,6 +5,8 @@ import com.dvpermyakov.feature.toggles.task.GenerateFeatureTogglesTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.create
+import org.gradle.kotlin.dsl.getByName
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 open class FeatureTogglePluginExtension {
     var configName: String = "default"
@@ -14,9 +16,10 @@ open class FeatureTogglePluginExtension {
 class FeatureTogglePlugin : Plugin<Project> {
     override fun apply(project: Project) {
         val extension = project.extensions.create<FeatureTogglePluginExtension>("toggles")
-        project.tasks.register("toggles", GenerateFeatureTogglesTask::class.java) {
+        val task = project.tasks.register("toggles", GenerateFeatureTogglesTask::class.java) {
             configName = extension.configName
             toggles = extension.toggles
         }
+        project.tasks.getByName<KotlinCompile>("compileKotlin").dependsOn(task)
     }
 }
