@@ -25,7 +25,7 @@ class FeatureToggleConfigCreator(
         return TypeSpec.objectBuilder(getFileName())
             .addAnnotation(Generated::class.java)
             .addSuperinterface(TypeNames.getFeatureToggleConfig())
-            .addProperties(listOf(getListProperty()))
+            .addProperty(getListProperty())
             .build()
     }
 
