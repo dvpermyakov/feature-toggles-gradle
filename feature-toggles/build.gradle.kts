@@ -36,7 +36,7 @@ configure<FeatureTogglePluginExtension> {
         ),
         FeatureToggle(
             id = "MAP",
-            enabled = File("ft_map.txt").readText().trim().toBoolean(),
+            enabled = File("$rootDir/ft_map.txt").readText().trim().toBoolean(),
             name = "Map implementation"
         )
     )
