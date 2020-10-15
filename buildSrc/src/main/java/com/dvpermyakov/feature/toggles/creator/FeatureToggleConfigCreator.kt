@@ -6,14 +6,14 @@ import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import javax.annotation.processing.Generated
 
 class FeatureToggleConfigCreator(
-    private val id: String,
+    private val name: String,
     private val list: List<String>
 ) {
     fun createFileSpec(): FileSpec {
         return getFileSpec()
     }
 
-    private fun getFileName() = "FeatureToggleConfig_${id}"
+    private fun getFileName() = "FeatureToggleConfig_${name}"
 
     private fun getFileSpec(): FileSpec {
         return FileSpec.builder(TypeNames.getPackageName(), getFileName())
