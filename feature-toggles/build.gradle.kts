@@ -8,15 +8,12 @@ plugins {
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 sourceSets.main {
     java.srcDirs("src/main/kotlin")
     java.srcDirs("build/generated")
-}
-
-repositories {
-    mavenCentral()
 }
 
 dependencies {
