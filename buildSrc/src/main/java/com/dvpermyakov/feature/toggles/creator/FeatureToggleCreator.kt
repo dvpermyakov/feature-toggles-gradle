@@ -42,7 +42,7 @@ class FeatureToggleCreator(
 
     private fun getNameProperty(): PropertySpec {
         return PropertySpec.builder("name", String::class, KModifier.OVERRIDE)
-            .initializer("%s", featureToggle.name)
+            .initializer("%S", featureToggle.name)
             .build()
     }
 }
