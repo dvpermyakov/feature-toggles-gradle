@@ -12,10 +12,10 @@ import java.io.File
 abstract class GenerateTask : DefaultTask() {
 
     @Input
-    var configName: String = "default"
+    lateinit var configName: String
 
     @Input
-    var toggles: List<FeatureToggle> = emptyList()
+    lateinit var toggles: List<FeatureToggle>
 
     @OutputDirectory
     val generatedDirectory: File = project.file("${project.buildDir}/generated")
