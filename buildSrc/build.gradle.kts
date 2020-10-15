@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.3.72"
+    kotlin("jvm") version "1.4.10"
     `java-gradle-plugin`
     `kotlin-dsl`
 }
@@ -9,7 +9,7 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8", "1.3.72"))
-    implementation(kotlin("gradle-plugin", "1.3.72"))
-    implementation("com.squareup:kotlinpoet:1.5.0")
+    implementation(kotlin("stdlib-jdk8", "1.4.10"))
+    implementation(kotlin("gradle-plugin", "1.4.10"))
+    implementation("com.squareup:kotlinpoet:1.6.0")
 }
