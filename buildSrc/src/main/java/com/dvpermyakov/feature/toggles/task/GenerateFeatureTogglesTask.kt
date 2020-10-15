@@ -1,7 +1,7 @@
 package com.dvpermyakov.feature.toggles.task
 
 import com.dvpermyakov.feature.toggles.creator.FeatureToggleConfigCreator
-import com.dvpermyakov.feature.toggles.creator.FeatureToggleObjectCreator
+import com.dvpermyakov.feature.toggles.creator.FeatureToggleCreator
 import com.dvpermyakov.feature.toggles.domain.FeatureToggle
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
@@ -22,16 +22,16 @@ abstract class GenerateFeatureTogglesTask : DefaultTask() {
 
     @TaskAction
     fun action() {
-        val objCreators = toggles.map { toggle ->
-            FeatureToggleObjectCreator(toggle)
+        val toggleCreators = toggles.map { toggle ->
+            FeatureToggleCreator(toggle)
         }
-        objCreators.forEach { creator ->
+        toggleCreators.forEach { creator ->
             creator.createFileSpec().writeTo(generatedDirectory)
         }
 
         val configCreator = FeatureToggleConfigCreator(
             id = configName,
-            list = objCreators.map { creator -> creator.getFileName() }
+            list = toggleCreators.map { creator -> creator.getFileName() }
         )
         configCreator.createFileSpec().writeTo(generatedDirectory)
     }

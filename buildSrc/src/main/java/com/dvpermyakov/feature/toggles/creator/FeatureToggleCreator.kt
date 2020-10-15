@@ -5,7 +5,7 @@ import com.squareup.kotlinpoet.*
 import javax.annotation.processing.Generated
 import com.dvpermyakov.feature.toggles.domain.FeatureToggle
 
-class FeatureToggleObjectCreator(
+class FeatureToggleCreator(
     private val featureToggle: FeatureToggle
 ) {
     fun createFileSpec(): FileSpec {
