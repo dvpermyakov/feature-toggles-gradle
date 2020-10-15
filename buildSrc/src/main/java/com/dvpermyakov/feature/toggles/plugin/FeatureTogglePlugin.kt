@@ -10,8 +10,8 @@ import org.gradle.kotlin.dsl.register
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 open class FeatureTogglePluginExtension {
-    var configName: String = "default"
-    var toggles: List<FeatureToggle> = emptyList()
+    lateinit var configName: String
+    lateinit var toggles: List<FeatureToggle>
 }
 
 class FeatureTogglePlugin : Plugin<Project> {
