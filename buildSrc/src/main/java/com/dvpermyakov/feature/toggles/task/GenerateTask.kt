@@ -22,8 +22,6 @@ abstract class GenerateTask : DefaultTask() {
 
     @TaskAction
     fun action() {
-        generatedDirectory.deleteRecursively()
-
         val toggleCreators = toggles.map { toggle ->
             FeatureToggleCreator(toggle)
         }
