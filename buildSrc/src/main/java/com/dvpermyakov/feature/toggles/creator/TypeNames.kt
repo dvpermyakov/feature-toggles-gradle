@@ -1,4 +1,4 @@
-package com.dvpermyakov.feature.toggles.task
+package com.dvpermyakov.feature.toggles.creator
 
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.TypeName

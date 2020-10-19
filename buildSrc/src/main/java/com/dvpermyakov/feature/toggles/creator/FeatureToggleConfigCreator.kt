@@ -1,6 +1,5 @@
 package com.dvpermyakov.feature.toggles.creator
 
-import com.dvpermyakov.feature.toggles.task.TypeNames
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import javax.annotation.processing.Generated
